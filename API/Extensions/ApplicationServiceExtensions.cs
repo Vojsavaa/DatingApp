@@ -16,11 +16,12 @@ public static class ApplicationServiceExtensions
     {
       opt.UseSqlite(config.GetConnectionString("DefaultConnection"));
     });
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
     services.AddCors();
     services.AddEndpointsApiExplorer();
     services.AddSwaggerGen();
-    services.AddScoped<ITokenService,TokenService>();
+    services.AddScoped<ITokenService, TokenService>();
+    services.AddScoped<IUserRepository, UserRepositoy>();
+    services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
     
     return services;
  }
